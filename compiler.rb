@@ -1,15 +1,5 @@
 #!/usr/bin/env ruby
 
-# Demo'd in src file
-# def f ()
-#  1
-# end
-
-# def f(x,y) g(x) end
-# def f(x,y) g(x,y,1) end
-# def f(x, y) add(x, y) end
-# def f(x, y) add(100, add(10, add(x, y))) end
-
 class Tokenizer
   # Remember: ordering is important
   TOKEN_TYPES = [
@@ -152,12 +142,12 @@ VarRefNode = Struct.new(:value)
 tokens = Tokenizer.new(File.read('./compiler-test-file.src')).tokenize
 
 # Uncomment to see the tokens
-# p tokens.map(&:inspect).join("\n")
+# puts tokens.map(&:inspect).join("\n")
 
 tree = Parser.new(tokens).parse
 
 # Uncomment to see the tree
-# p tree
+# puts tree
 
 class Generator
   def generate(node)
